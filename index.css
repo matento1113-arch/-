@@ -1,0 +1,133 @@
+/* ── リセット ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── CSS変数（claude.aiのテーマトークンを再現） ── */
+:root {
+  /* backgrounds */
+  --color-background-primary:   #ffffff;
+  --color-background-secondary: #f4f3ee;
+  --color-background-tertiary:  #eceae3;
+  --color-background-info:      #e6f1fb;
+  --color-background-danger:    #fcebeb;
+  --color-background-success:   #eaf3de;
+  --color-background-warning:   #faeeda;
+
+  /* text */
+  --color-text-primary:   #1a1a18;
+  --color-text-secondary: #6b6a65;
+  --color-text-tertiary:  #9b9a96;
+  --color-text-info:      #0c447c;
+  --color-text-danger:    #791f1f;
+  --color-text-success:   #27500a;
+  --color-text-warning:   #633806;
+
+  /* borders */
+  --color-border-tertiary: rgba(26,26,24,0.15);
+  --color-border-secondary: rgba(26,26,24,0.30);
+  --color-border-primary:   rgba(26,26,24,0.40);
+  --color-border-info:      #b5d4f4;
+  --color-border-danger:    #f7c1c1;
+  --color-border-success:   #c0dd97;
+  --color-border-warning:   #fac775;
+
+  /* radius */
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
+
+  /* fonts */
+  --font-sans: 'Noto Sans JP', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+  --font-serif: Georgia, serif;
+}
+
+/* ── ダークモード ── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background-primary:   #1e1e1c;
+    --color-background-secondary: #2a2a27;
+    --color-background-tertiary:  #323230;
+    --color-background-info:      #0c2240;
+    --color-background-danger:    #3a1010;
+    --color-background-success:   #122508;
+    --color-background-warning:   #3a1f04;
+
+    --color-text-primary:   #f0efe8;
+    --color-text-secondary: #a0a09a;
+    --color-text-tertiary:  #707068;
+    --color-text-info:      #85b7eb;
+    --color-text-danger:    #f09595;
+    --color-text-success:   #97c459;
+    --color-text-warning:   #ef9f27;
+
+    --color-border-tertiary:  rgba(240,239,232,0.12);
+    --color-border-secondary: rgba(240,239,232,0.25);
+    --color-border-primary:   rgba(240,239,232,0.38);
+    --color-border-info:      #185fa5;
+    --color-border-danger:    #a32d2d;
+    --color-border-success:   #3b6d11;
+    --color-border-warning:   #854f0b;
+  }
+}
+
+/* ── ベーススタイル ── */
+html, body, #root {
+  height: 100%;
+  background: var(--color-background-tertiary);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: var(--color-background-tertiary);
+  min-height: 100vh;
+}
+
+/* ── ユーティリティ ── */
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+/* selbox（詐欺師選択UI用） */
+.selbox {
+  cursor: pointer;
+  padding: 7px 10px;
+  border-radius: var(--border-radius-md);
+  border: 0.5px solid var(--color-border-secondary);
+  background: var(--color-background-secondary);
+  margin-bottom: 4px;
+  transition: background 0.1s, border-color 0.1s;
+}
+.selbox.on {
+  border-color: var(--color-border-success);
+  background: var(--color-background-success);
+}
+.selbox.blocked {
+  opacity: 0.45;
+  cursor: default;
+  border-style: dashed;
+}
+
+/* section label */
+.sl {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-secondary);
+  margin-bottom: 6px;
+}
